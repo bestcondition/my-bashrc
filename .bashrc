@@ -18,10 +18,18 @@ export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # make sure open pycharm in terminal
-alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
+alias pycharm="'/Users/bestcondition/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/223.8214.51/PyCharm.app'"
 
 # tornado unittest debug error
 export ASYNC_TEST_TIMEOUT=600
 
 # for project env
 export LOCAL_ENV="develop"
+
+# docker-compose
+alias dcp='docker-compose'
+alias dcpl='docker-compose logs -f --tail 500'
+alias dcpr='docker-compose restart'
+alias dcpu='docker-compose up -d'
+alias dcpd='docker-compose down'
+
