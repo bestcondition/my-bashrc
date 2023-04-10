@@ -10,6 +10,8 @@ alias pip3='python3 -m pip'
 # proxy
 alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias unproxy='unset https_proxy http_proxy all_proxy'
+export no_proxy='localhost,127.0.0.1'
+proxy
 
 # java
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
@@ -18,7 +20,7 @@ export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # make sure open pycharm in terminal
-alias pycharm="'/Users/bestcondition/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/223.8214.51/PyCharm.app'"
+# alias pycharm="'/Users/bestcondition/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/223.8214.51/PyCharm.app'"
 
 # tornado unittest debug error
 export ASYNC_TEST_TIMEOUT=600
@@ -32,4 +34,12 @@ alias dcpl='docker-compose logs -f --tail 500'
 alias dcpr='docker-compose restart'
 alias dcpu='docker-compose up -d'
 alias dcpd='docker-compose down'
+function dcpe() {
+    # if no shell is specified, use bash
+    if [ -z "$2" ]; then
+        docker-compose exec -it $1 bash
+    else
+        docker-compose exec -it $1 $2
+    fi
+}
 
