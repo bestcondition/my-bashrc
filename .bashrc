@@ -35,11 +35,16 @@ alias dcpr='docker-compose restart'
 alias dcpu='docker-compose up -d'
 alias dcpd='docker-compose down'
 function dcpe() {
-    # if no shell is specified, use bash
     if [ -z "$2" ]; then
-        docker-compose exec -it $1 bash
+        docker-compose exec $1 bash
     else
-        docker-compose exec -it $1 $2
+        docker-compose exec $1 $2
     fi
 }
-
+function dpe() {
+    if [ -z "$2" ]; then
+        docker exec -it $1 bash
+    else
+        docker exec -it $1 $2
+    fi
+}
