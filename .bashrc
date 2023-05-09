@@ -34,6 +34,9 @@ alias dcpl='docker-compose logs -f --tail 500'
 alias dcpr='docker-compose restart'
 alias dcpu='docker-compose up -d'
 alias dcpd='docker-compose down'
+alias dcps='docker-compose stop'
+alias dcpp='docker-compose ps'
+alias dcpc='docker-compose config'
 function dcpe() {
     if [ -z "$2" ]; then
         docker-compose exec $1 bash
@@ -47,4 +50,14 @@ function dpe() {
     else
         docker exec -it $1 $2
     fi
+}
+function pipifg() {
+    # pip install $1 && pip freeze | grep A
+    if [ -z "$2" ]; then
+        grepname=$1
+    else
+        grepname=$2
+    fi
+    # grep 忽略大小写
+    pip install $1 && pip freeze | grep -i $grepname
 }
